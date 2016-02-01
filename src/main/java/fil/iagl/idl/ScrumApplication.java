@@ -38,6 +38,8 @@ public class ScrumApplication {
         return ds;
     }
 
+    //gnn
+
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
 
