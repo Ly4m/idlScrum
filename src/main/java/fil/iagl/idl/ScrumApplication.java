@@ -28,10 +28,10 @@ public class ScrumApplication {
 
 		BasicDataSource ds = new BasicDataSource();
 
-		// url to dev at home
-		ds.setUsername("postgres");
-		ds.setPassword("postgres");
-		ds.setUrl("jdbc:postgresql://localhost:5432/idl4");
+        // url to dev at home
+        ds.setUsername("postgres");
+        ds.setPassword("postgres");
+        ds.setUrl("jdbc:postgresql://localhost:5432/IDL4");
 
 		ds.setDriverClassName("org.postgresql.Driver");
 		ds.setMaxWait(25);
