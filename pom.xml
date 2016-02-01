@@ -67,6 +67,13 @@
         </dependency>
         
         <dependency>
+	<groupId>commons-dbcp</groupId>
+	<artifactId>commons-dbcp</artifactId>
+	<version>1.2.2</version>
+</dependency>
+        
+        
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>1.2.5.RELEASE</version>

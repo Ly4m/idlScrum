@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="fil.iagl.idl.dao.TestDao">
+	<resultMap type="fil.iagl.idl.entite.Test" id="Test_ResultMap">
+		<id property="id" column="tst_id"/>
+		<result property="name" column="tst_name"/>
+		<result property="validate" column="tst_validate"/>
+	</resultMap>
+
+	<insert id="create" useGeneratedKeys="true" >
+		insert into TEST (tst_name, tst_validate)
+			VALUES (#{test.name}, #{test.validate})
+	</insert>
+
+</mapper>
