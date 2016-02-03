@@ -6,7 +6,7 @@ import fil.iagl.idl.entite.Task;
 
 public interface TaskDao {
 
-	void create(@Param("name") String name, @Param("description") String description);
+	void create(@Param("task") Task task);
 
 	void changeState(@Param("id") Integer id, @Param("state") Integer state);
 

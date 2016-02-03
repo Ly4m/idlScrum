@@ -15,4 +15,8 @@ public class Task {
 	private User user;
 	private Integer state;
 
+	public Task (){
+		
+	}
+
 }
