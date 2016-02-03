@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="fil.iagl.idl.dao.AssociationDao">
+	<resultMap type="fil.iagl.idl.entite.Association" id="Association_ResultMap">
+		<id property="id" column="ass_id"/>
+		<association property="task" column="ass_id_tsk" select="fil.iagl.idl.dao.TaskDao.getById"/>
+		 <!-- association ou collection pour  test ? -->
+		<association property="test" column="ass_id_test" select="fil.iagl.idl.dao.TestDao.getById"/>
+	</resultMap>
+	
+	<insert id="create" useGeneratedKeys="true" keyColumn="ass_id" keyProperty="association.id">
+		insert into ASSOCIATION (ass_id_tsk, ass_id_tst)
+		VALUES (#{association.task.id}, #{association.test.id})
+	</insert>
+	
+	<delete id="delete">
+		delete from ASSOCIATION
+		where ass_id = #{idAssociation}
+	</delete>
+	
+	<select id="getAllForTask" resultMap = "Association_ResultMap">
+		select ass_id, ass_id_tsk, ass_id_tst
+		from ASSOCIATION
+		where ass_tsk_id = #{idTask}
+	</select>
+</mapper>

@@ -9,9 +9,26 @@
 		<result property="validate" column="tst_validate"/>
 	</resultMap>
 
-	<insert id="create" useGeneratedKeys="true" >
+	<insert id="create" useGeneratedKeys="true" keyColumn="tst_id" keyProperty="test.id">
 		insert into TEST (tst_name, tst_validate)
 			VALUES (#{test.name}, #{test.validate})
 	</insert>
+	
+	<select id="getById" resultMap="Test_ResultMap">
+		select tst_id, tst_name, tst_validate
+		from TEST
+		where tst_id = #{idTest}
+	</select>
+	
+	<update id="changeState">
+		update tst_validate = #{validate}
+		from TEST
+		where tst_id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from TEST
+		where tst_id=#{idTest}
+	</delete>
 
 </mapper>
