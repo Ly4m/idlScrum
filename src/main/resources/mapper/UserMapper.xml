@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="fil.iagl.idl.dao.userDao">
+<mapper namespace="fil.iagl.idl.dao.UserDao">
 	<resultMap type="fil.iagl.idl.entite.User" id="User_ResultMap">
 		<id property="id" column="usr_id" />
 		<result property="login" column="usr_login"/>

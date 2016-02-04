@@ -30,7 +30,7 @@ public class ScrumApplication {
         // url to dev at home
         ds.setUsername("postgres");
         ds.setPassword("postgres");
-        ds.setUrl("jdbc:postgresql://localhost:5432/IDL4");
+        ds.setUrl("jdbc:postgresql://localhost:5433/IDL4");
 
 		ds.setDriverClassName("org.postgresql.Driver");
 		ds.setMaxWait(25);
