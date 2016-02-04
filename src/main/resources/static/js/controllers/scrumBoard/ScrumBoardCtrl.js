@@ -1,5 +1,5 @@
-angular.module('scrumboard').controller('ScrumBoardCtrl', function ($scope, $http, $location) {
+angular.module('scrumboard')
+    .controller('ScrumBoardCtrl', function ($scope, $http, $location) {
 
 
-
-});
+    });
