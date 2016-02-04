@@ -1,19 +1,18 @@
-angular.module('scrumboard').controller('LoginController', function () {
+angular.module('scrumboard').controller('LoginController', function ($scope, $http, $location) {
 
-    this.credentials = {
-        user: '',
+    this.formulaireRecherche = {
+        login: '',
         password: ''
     };
 
-    this.signIn = function () {
+    $scope.signIn = function () {
 
-        console.debug("COUCOU");
-
-
-        $http.post('/signin', this.credentials).success(data, function () {
-            console.debug(JSON.stringify(data));
-        }).error(data, function () {
-            console.debug(JSON.stringify(error));
+        $http.post('/search', this.formulaireRecherche).success(function (data) {
+            if(data){
+                $location.path('/scrumboard');
+            } else {
+                console.debug('error');
+            }
         });
 
     }
