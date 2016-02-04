@@ -1,10 +1,10 @@
-<form class="form-signin" name="loginForm" ng-controller="LoginController as loginCtrl" ng-submit="loginCtrl.signIn()">
+<form class="form-signin" name="loginForm" ng-submit="signIn()">
     <h2 class="form-signin-heading">Please sign in !</h2>
-    <label for="userName" class="sr-only">Username</label>
-    <input id="userName" ng-model="loginCtrl.credentials.user" type="text" class="form-control"
-           title="Username" placeholder="Username"/>
+    <label for="login" class="sr-only">Login</label>
+    <input id="login" ng-model="formulaireRecherche.login" type="text" class="form-control"
+           title="login" placeholder="login"/>
     <label for="password" class="sr-only">Password</label>
-    <input id="password" ng-model="loginCtrl.credentials.password" type="password" class="form-control"
+    <input id="password" ng-model="formulaireRecherche.password" type="password" class="form-control"
            title="Password" placeholder="Password"/>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
