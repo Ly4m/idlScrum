@@ -1,20 +1,20 @@
-angular.module('scrumboard').controller('LoginController', function ($scope, $http, $location) {
+angular.module('scrumboard')
+    .controller('LoginController', function ($scope, $http, $location) {
 
-    this.formulaireRecherche = {
-        login: '',
-        password: ''
-    };
+        this.formulaireRecherche = {
+            login: '',
+            password: ''
+        };
 
-    $scope.signIn = function () {
+        $scope.signIn = function () {
 
-        $http.post('/search', this.formulaireRecherche).success(function (data) {
-            if(data){
-                $location.path('/scrumboard');
-            } else {
-                console.debug('error');
-            }
-        });
+            $http.post('/search', this.formulaireRecherche).success(function (data) {
 
-    }
-
-});
+                if (data) {
+                    $location.path('/scrumboard');
+                } else {
+                    //todo
+                }
+            });
+        }
+    });
