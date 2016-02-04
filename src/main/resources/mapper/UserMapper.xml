@@ -7,7 +7,7 @@
 		<result property="login" column="usr_login"/>
 		<result property="password" column="usr_password"/>
 	</resultMap>
-	
+
 	<select id="get" resultMap = "User_ResultMap">
 		select usr_id, usr_login, usr_password
 		from SCRUM_USER
@@ -31,5 +31,6 @@
 		#{user.password}
 		)
 	</insert>
+
 
 </mapper>
