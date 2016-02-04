@@ -8,7 +8,8 @@ create table TASK (
    tsk_id serial primary key,
    tsk_name varchar(60) not null,
    tsk_description varchar(1024),
-   tsk_id_usr integer references SCRUM_USER (usr_id)
+   tsk_id_usr integer references SCRUM_USER (usr_id),
+   tsk_id_state integer not null
 );
 
 create table TEST (

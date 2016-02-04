@@ -7,8 +7,8 @@
 		<id property="id" column="tsk_id"/>
 		<result property="name" column="tsk_name"/>
 		<result property="description" column="tsk_description"/>
-		<result property="state" column="tsk_state"/>
-		<association property="idUser" column="tsk_id_usr" select="fil.iagl.idl.dao.UserDao.getById"/>
+		<result property="state" column="tsk_id_state"/>
+		<association property="user" column="tsk_id_usr" select="fil.iagl.idl.dao.UserDao.getById"/>
 	</resultMap>
 	
 	<insert id="create" useGeneratedKeys="true" keyColumn="tsk_id" keyProperty="task.id">
@@ -40,6 +40,12 @@
 		update TASK set tsk_name=#{name}, tsk_description  = #{description}
 		where tsk_id = #{id}
 	</update>
+	
+	<select id="getById" resultMap="Task_ResultMap">
+		select tsk_id, tsk_name, tsk_description, tsk_usr_id, tsk_id_state
+		from TASK
+		where tsk_id = #{idTask}
+	</select>
 	
 
 </mapper>

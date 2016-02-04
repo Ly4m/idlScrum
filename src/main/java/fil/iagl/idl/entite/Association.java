@@ -10,6 +10,6 @@ import lombok.ToString;
 public class Association {
 
 	private Integer id;
-	private Integer idTask;
-	private Integer idTest;
+	private Task task;
+	private Test test;
 }
