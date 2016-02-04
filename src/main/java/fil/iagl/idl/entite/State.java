@@ -1,22 +1,20 @@
 package fil.iagl.idl.entite;
 
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-@Setter
 @ToString
 public enum State {
-	TODO(1), DOING(2), DONE(3), TEST_FAIL(4);
+    TODO(1) , DOING(2) , DONE(3) , TEST_FAIL(4);
 
-	private Integer id;
+    private Integer id;
 
-	State(Integer id) {
-		this.id = id;
-	}
-	
-	public Integer  getId(){
-		return id;
-	}
+    State( Integer id ) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
 }
