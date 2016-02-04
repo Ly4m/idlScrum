@@ -14,7 +14,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.maven.shared.invoker.MavenInvocationException;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -32,7 +31,7 @@ import fil.iagl.idl.parser.XMLParser;
 @MapperScan(value = "fil.iagl.idl.dao")
 public class ScrumApplication {
 
-	private static final String PATH_TO_POM = "C:/workspace/HotelApp";
+	private static final String PATH_TO_POM = "C:/workspace/HotelApp/HotelDatabase";
 
 	@Bean
 	public DataSource dataSource() {
@@ -74,7 +73,7 @@ public class ScrumApplication {
 	public static void main(String[] args) {
 		try {
 			MavenRunner.cleanCompileTest(PATH_TO_POM);
-			XMLParser.readSurefireReport(new File(PATH_TO_POM + "/report"), new Resultat());
+			XMLParser.readSurefireReport(new File(PATH_TO_POM + "/target"), new Resultat());
 		} catch (MavenInvocationException e) {
 			e.printStackTrace();
 		} catch (SAXException e) {
@@ -84,7 +83,7 @@ public class ScrumApplication {
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		}
-		SpringApplication.run(ScrumApplication.class, args);
+		// SpringApplication.run(ScrumApplication.class, args);
 	}
 
 	// @Override
