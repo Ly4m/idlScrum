@@ -11,7 +11,7 @@ angular.module('scrumboard').controller('LoginController', function ($scope, $ht
             if(data){
                 $location.path('/scrumboard');
             } else {
-                console.debug('error');
+                //todo
             }
         });
 
