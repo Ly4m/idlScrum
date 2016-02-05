@@ -3,11 +3,11 @@ angular.module('scrumboard', ['ngRoute'])
 
         $routeProvider
             .when('/', {
-                templateUrl: 'js/templates/login/login.html',
+                templateUrl: 'templates/login/login.html',
                 controller: 'LoginController'
             })
             .when('/scrumboard', {
-                templateUrl: 'js/templates/scrumBoard/scrumBoard.html',
+                templateUrl: 'templates/scrumBoard/scrumBoard.html',
                 controller: 'ScrumBoardCtrl'
             })
             .otherwise({

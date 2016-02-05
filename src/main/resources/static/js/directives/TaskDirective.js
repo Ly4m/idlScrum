@@ -11,7 +11,7 @@ angular.module('scrumboard')
     .directive('taskDirective', function () {
         return {
             restrict: 'E',
-            templateUrl: 'js/templates/scrumBoard/task.html',
+            templateUrl: 'templates/scrumBoard/task.html',
             controller: 'TaskCtrl'
         };
     });
