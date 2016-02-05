@@ -9,14 +9,14 @@ import lombok.ToString;
 @ToString
 public class Task {
 
-	private Integer id;
-	private String name;
-	private String description;
-	private User user;
-	private Integer state;
+    private Integer id;
 
-	public Task (){
-		
-	}
+    private String  name;
+
+    private String  description;
+
+    private User    user;
+
+    private Integer state;
 
 }
