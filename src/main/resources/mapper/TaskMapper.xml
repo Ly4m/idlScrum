@@ -47,5 +47,10 @@
 		where tsk_id = #{idTask}
 	</select>
 	
+	<select id="getAll" resultMap="Task_ResultMap">
+		select tsk_id, tsk_name, tsk_description, tsk_usr_id, tsk_id_state
+		from TASK
+	</select>
+	
 
 </mapper>
