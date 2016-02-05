@@ -1,11 +1,17 @@
-angular.module('scrumboard',[])
+angular.module('scrumboard', ['ngRoute'])
+    .config(['$routeProvider', function ($routeProvider) {
 
-.config(function($routeProvider){
+        $routeProvider
+            .when('/', {
+                templateUrl: 'js/templates/login/login.html',
+                controller: 'LoginController'
+            })
+            .when('/scrumboard', {
+                templateUrl: 'js/templates/scrumBoard/scrumBoard.html',
+                controller: 'ScrumBoardCtrl'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
 
-    $routeProvider.when('/', {
-      templateUrl: 'templates/login/login.html',
-        controller: 'LoginController',
-        controllerAs : 'loginCtlr'
-    })
-
-});
+    }]);
