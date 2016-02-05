@@ -23,3 +23,14 @@ create table ASSOCIATION (
   ass_id_tsk Integer not null references TASK (tsk_id),
   ass_id_tst Integer not null references TEST (tst_id)
 );
+
+create table STORIES(
+	str_id serial primary key,
+	str_text	VARCHAR(140) NOT NULL
+);
+
+create table BIND_STORIES_TASK(
+	bnd_id serial primary key,
+	bnd_id_str Integer not null references STORIES (str_id),
+	bnd_id_tsk Integer not null references TASK (tsk_id)
+);
