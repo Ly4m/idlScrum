@@ -8,10 +8,13 @@
  * @restrict E
  * */
 angular.module('scrumboard')
-    .directive('taskDirective', function () {
+    .directive('sbTask', function () {
         return {
             restrict: 'E',
             templateUrl: 'templates/scrumBoard/task.html',
-            controller: 'TaskCtrl'
+            scope: {
+                header: "=",
+                description: "="
+            }
         };
     });

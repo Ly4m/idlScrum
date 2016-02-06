@@ -7,7 +7,7 @@ angular.module('scrumboard', ['ngRoute'])
                 controller: 'LoginController'
             })
             .when('/scrumboard', {
-                templateUrl: 'templates/scrumBoard/scrumBoard.html',
+                templateUrl: '../templates/scrumBoard/scrumBoard.html',
                 controller: 'ScrumBoardCtrl'
             })
             .otherwise({
