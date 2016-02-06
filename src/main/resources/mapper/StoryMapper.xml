@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="fil.iagl.idl.dao.StoryDao">
+	<resultMap type="fil.iagl.idl.entite.Story" id="Story_ResultMap">
+		<id property="id" column="str_id" />
+		<result property="text" column="str_text"/>
+		<collection property="tasks" column="str_id" select="fil.iagl.idl.dao.BindStoryTaskDao.getAllByIdStory"/>
+	</resultMap>
+	
+	<select id="getById" resultMap="Story_ResultMap">
+		SELECT srt_id, str_text
+		FROM STORY
+		WHERE str_id=#{id}
+	</select>
+	
+	<select id="getAll" resultMap="Story_ResultMap">
+		SELECT srt_id, str_text
+		FROM STORY
+	</select>
+</mapper>
