@@ -16,7 +16,7 @@
 		tsk_name,
 		tsk_description,
 		tsk_id_usr,
-		tsk_state
+		tsk_id_state
 		)
 		VALUES (
 		#{task.name},
@@ -27,7 +27,7 @@
 	</insert>
 	
 	<update id="changeState">
-		update TASK set tsk_state =  #{state}
+		update TASK set tsk_id_state =  #{state}
 		where tsk_id = #{id}
 	</update>
 	
@@ -42,15 +42,21 @@
 	</update>
 	
 	<select id="getById" resultMap="Task_ResultMap">
-		select tsk_id, tsk_name, tsk_description, tsk_usr_id, tsk_id_state
+		select tsk_id, tsk_name, tsk_description, tsk_id_usr, tsk_id_state
 		from TASK
 		where tsk_id = #{idTask}
 	</select>
 	
 	<select id="getAll" resultMap="Task_ResultMap">
-		select tsk_id, tsk_name, tsk_description, tsk_usr_id, tsk_id_state
+		select tsk_id, tsk_name, tsk_description, tsk_id_usr, tsk_id_state
 		from TASK
 	</select>
-	
+
+	<select id="getByIdStory" resultMap="Task_ResultMap">
+		select tsk_id, tsk_name, tsk_description, tsk_id_usr, tsk_id_state
+		from TASK, bind_stories_task
+		WHERE bnd_id_str=#{id}
+		AND bnd_id_tsk = tsk_id;
+	</select>
 
 </mapper>

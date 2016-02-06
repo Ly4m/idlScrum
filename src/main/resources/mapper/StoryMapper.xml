@@ -5,17 +5,17 @@
 	<resultMap type="fil.iagl.idl.entite.Story" id="Story_ResultMap">
 		<id property="id" column="str_id" />
 		<result property="text" column="str_text"/>
-		<collection property="tasks" column="str_id" select="fil.iagl.idl.dao.BindStoryTaskDao.getAllByIdStory"/>
+		<collection property="tasks" column="str_id" select="fil.iagl.idl.dao.TaskDao.getByIdStory"/>
 	</resultMap>
 	
 	<select id="getById" resultMap="Story_ResultMap">
-		SELECT srt_id, str_text
-		FROM STORY
+		SELECT str_id, str_text
+		FROM STORIES
 		WHERE str_id=#{id}
 	</select>
 	
 	<select id="getAll" resultMap="Story_ResultMap">
-		SELECT srt_id, str_text
-		FROM STORY
+		SELECT str_id, str_text
+		FROM STORIES
 	</select>
 </mapper>

@@ -8,9 +8,9 @@
 		<association property="task" column="bnd_id_tsk" select="fil.iagl.idl.dao.TaskDao.getById"/>
 	</resultMap>
 	
-	<select id="getAllByIdStory">
-		SELECT bnd_id, bnd_story, bnd_task
-		FROM BIND_STORY_TASK
-		WHERE bnd_id=#{id}
+	<select id="getAllByIdStory" resultMap="BindStoryTask_ResultMap">
+		SELECT bnd_id, bnd_id_str, bnd_id_tsk
+		FROM BIND_STORIES_TASK
+		WHERE bnd_id_str=#{id}
 	</select>
 </mapper>

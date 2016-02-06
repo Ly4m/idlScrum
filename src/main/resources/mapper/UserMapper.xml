@@ -16,7 +16,7 @@
 	</select>
 	
 	<select id="getById" resultMap="User_ResultMap">
-		select user_id, usr_login, usr_password
+		select usr_id, usr_login, usr_password
 		from SCRUM_USER
 		where usr_id = #{id}
 	</select>
