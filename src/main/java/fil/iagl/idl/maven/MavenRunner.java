@@ -10,7 +10,7 @@ import org.apache.maven.shared.invoker.MavenInvocationException;
 
 public class MavenRunner {
 
-	private static final String MAVEN_HOME_PATH = "C:/Program Files/apache-maven-3.3.9";
+	private static final String MAVEN_HOME_PATH = "C:/Program Files/apache-maven-3.3.3";
 
 	public static void cleanCompileTest(String pomLocation) throws MavenInvocationException {
 		InvocationRequest request = new DefaultInvocationRequest();
