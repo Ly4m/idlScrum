@@ -7,6 +7,8 @@ import fil.iagl.idl.dao.TestDao;
 import fil.iagl.idl.entite.Test;
 import fil.iagl.idl.service.TestService;
 
+import java.util.List;
+
 @Service
 public class TestServiceImpl implements TestService{
 	@Autowired
@@ -39,6 +41,11 @@ public class TestServiceImpl implements TestService{
 			testDao.getById(id);
 		}
 		return null;
+	}
+
+	@Override
+	public List<Test> getAll() {
+		return testDao.getAll();
 	}
 
 }

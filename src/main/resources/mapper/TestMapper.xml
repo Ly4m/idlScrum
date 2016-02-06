@@ -31,4 +31,8 @@
 		where tst_id=#{idTest}
 	</delete>
 
+	<select id="getAll" resultMap="Test_ResultMap">
+		select * from test;
+	</select>
+
 </mapper>
