@@ -22,6 +22,7 @@
         FROM TEST
         WHERE tst_id = #{idTest}
     </select>
+    
 
     <update id="changeState">
         UPDATE tst_validate = #{validate}
@@ -31,6 +32,11 @@
 
     <delete id="deleteAll">
         DELETE FROM TEST
+    </delete>
+    
+    <delete id="delete">
+  	  DELETE FROM TEST
+ 	   WHERE tst_id = #{id}
     </delete>
 
     <select id="getAll" resultMap="Test_ResultMap">

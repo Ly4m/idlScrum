@@ -1,5 +1,7 @@
 package fil.iagl.idl;
 
+import javax.sql.DataSource;
+
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -10,60 +12,57 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Controller;
 
-import javax.sql.DataSource;
-
 @Controller
 @SpringBootApplication
 @MapperScan(value = "fil.iagl.idl.dao")
 public class ScrumApplication {
 
-    public static final String PATH_TO_POM = "C:/workspace/HotelApp/HotelDatabase";
+	public static final String PATH_TO_POM = "C:/workspace/HotelApp/HotelDatabase";
 
-    @Bean
-    public DataSource dataSource() {
+	@Bean
+	public DataSource dataSource() {
 
-        BasicDataSource ds = new BasicDataSource();
+		BasicDataSource ds = new BasicDataSource();
 
-        // url to dev at home
-        ds.setUsername("postgres");
-        ds.setPassword("postgres");
-        ds.setUrl("jdbc:postgresql://localhost:5433/IDL4");
+		// url to dev at home
+		ds.setUsername("postgres");
+		ds.setPassword("postgre");
+		ds.setUrl("jdbc:postgresql://localhost:5432/IDL4");
 
-        ds.setDriverClassName("org.postgresql.Driver");
-        ds.setMaxWait(25);
-        return ds;
-    }
+		ds.setDriverClassName("org.postgresql.Driver");
+		ds.setMaxWait(25);
+		return ds;
+	}
 
-    // gnn
+	// gnn
 
-    @Bean
-    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+	@Bean
+	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
 
-        final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource);
+		final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
+		sessionFactory.setDataSource(dataSource);
 
-        final PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sessionFactory.setMapperLocations(resolver.getResources("classpath*:**/*Mapper.xml"));
-        return sessionFactory.getObject();
-    }
+		final PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+		sessionFactory.setMapperLocations(resolver.getResources("classpath*:**/*Mapper.xml"));
+		return sessionFactory.getObject();
+	}
 
+	public static void main(String[] args) {
+		SpringApplication.run(ScrumApplication.class, args);
+	}
 
-    public static void main(String[] args) {
-        SpringApplication.run(ScrumApplication.class, args);
-    }
-
-    // @Override
-    // public void run(String... args) throws Exception {
-    // RestTemplate restTemplate = new RestTemplate();
-    // Report[] quote =
-    // restTemplate.getForObject("http://travis-ci.org/Piorunj/HotelApp",
-    // Report[].class);
-    // ClientHttpRequest client = restTemplate.getRequestFactory()
-    // .createRequest(new URI("https://api.travis-ci.org/jobs"),
-    // HttpMethod.GET);
-    // ClientHttpResponse response = client.execute();
-    //
-    // System.out.println(quote.toString().length());
-    // }
+	// @Override
+	// public void run(String... args) throws Exception {
+	// RestTemplate restTemplate = new RestTemplate();
+	// Report[] quote =
+	// restTemplate.getForObject("http://travis-ci.org/Piorunj/HotelApp",
+	// Report[].class);
+	// ClientHttpRequest client = restTemplate.getRequestFactory()
+	// .createRequest(new URI("https://api.travis-ci.org/jobs"),
+	// HttpMethod.GET);
+	// ClientHttpResponse response = client.execute();
+	//
+	// System.out.println(quote.toString().length());
+	// }
 
 }

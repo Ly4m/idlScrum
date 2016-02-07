@@ -4,6 +4,11 @@ CREATE TABLE SCRUM_USER (
   usr_password VARCHAR(60)
 );
 
+CREATE TABLE STORIES (
+  str_id   SERIAL PRIMARY KEY,
+  str_text VARCHAR(140) NOT NULL
+);
+
 CREATE TABLE TASK (
   tsk_id          SERIAL PRIMARY KEY,
   tsk_name        VARCHAR(60) NOT NULL,
@@ -23,9 +28,4 @@ CREATE TABLE ASSOCIATION (
   ass_id     SERIAL PRIMARY KEY,
   ass_id_tsk INTEGER NOT NULL REFERENCES TASK (tsk_id),
   ass_id_tst INTEGER NOT NULL REFERENCES TEST (tst_id)
-);
-
-CREATE TABLE STORIES (
-  str_id   SERIAL PRIMARY KEY,
-  str_text VARCHAR(140) NOT NULL
 );
