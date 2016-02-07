@@ -17,6 +17,8 @@ public interface TaskDao {
 
 	Task getById(@Param("idTask") Integer idTask);
 
+	void deleteByIdStory(@Param("idStory") Integer idStory);
+
 	List<Task> getByIdStory(@Param("id")Integer idStory);
 
 	List<Task> getAll();

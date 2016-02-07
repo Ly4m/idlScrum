@@ -23,10 +23,15 @@
         FROM STORIES
     </select>
 
+    <delete id="delete">
+        DELETE FROM stories
+        WHERE str_id = #{id}
+    </delete>
+
     <insert id="create" useGeneratedKeys="true" keyColumn="str_id" keyProperty="story.id"
             parameterType="fil.iagl.idl.entite.Story">
         INSERT INTO STORIES (str_text) VALUES (#{story.text})
     </insert>
-    
+
 
 </mapper>

@@ -22,15 +22,30 @@ angular.module('scrumboard')
 
         $scope.addStory = function () {
 
-            $http.post("/story", $scope.newStory).success(function(data){
-               console.debug(JSON.stringify(data));
+            $http.post("/story", $scope.newStory).success(function (data) {
                 $scope.newStory = {};
                 $scope.refresh();
             });
 
         };
 
+        $scope.deleteStory = function (id) {
+
+            var url = "/story/delete/" + id;
+
+            $http({
+                method: "delete",
+                url: url
+            }).success(function (data) {
+                $scope.refresh();
+            });
+
+
+        }
+        ;
+
         $scope.refresh();
 
 
-    });
+    })
+;

@@ -14,6 +14,11 @@ angular.module('scrumboard')
             templateUrl: 'templates/navBar/navBar.html',
             link: function (scope, elem, attr) {
 
+            },
+            scope: {
+                current : "="
+            },
+            controller: function($scope){
             }
         };
 });

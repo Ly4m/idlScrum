@@ -9,6 +9,7 @@ create table TASK (
    tsk_name varchar(60) not null,
    tsk_description varchar(1024),
    tsk_id_usr integer references SCRUM_USER (usr_id),
+   tsk_id_str integer REFERENCES STORIES (str_id),
    tsk_id_state integer not null
 );
 
@@ -27,10 +28,4 @@ create table ASSOCIATION (
 create table STORIES(
 	str_id serial primary key,
 	str_text	VARCHAR(140) NOT NULL
-);
-
-create table BIND_STORIES_TASK(
-	bnd_id serial primary key,
-	bnd_id_str Integer not null references STORIES (str_id),
-	bnd_id_tsk Integer not null references TASK (tsk_id)
 );

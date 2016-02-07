@@ -37,7 +37,7 @@
 	</delete>
 	
 	<update id="update">
-		update TASK set tsk_name=#{name}, tsk_description  = #{description}
+		update TASK set tsk_name = #{name}, tsk_description  = #{description}
 		where tsk_id = #{id}
 	</update>
 	
@@ -53,10 +53,14 @@
 	</select>
 
 	<select id="getByIdStory" resultMap="Task_ResultMap">
-		select tsk_id, tsk_name, tsk_description, tsk_id_usr, tsk_id_state
-		from TASK, bind_stories_task
-		WHERE bnd_id_str=#{id}
-		AND bnd_id_tsk = tsk_id;
+		select
+			tsk_id,
+			tsk_name,
+			tsk_description,
+			tsk_id_usr,
+			tsk_id_state
+		from TASK
+		WHERE task.tsk_id_str = #{id}
 	</select>
 
 </mapper>

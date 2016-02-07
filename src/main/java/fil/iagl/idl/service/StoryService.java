@@ -12,4 +12,6 @@ public interface StoryService {
 
 	void create(Story story);
 
+	void delete(Integer id);
+
 }

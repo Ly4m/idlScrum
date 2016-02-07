@@ -3,10 +3,7 @@ package fil.iagl.idl.controller;
 import fil.iagl.idl.entite.Story;
 import fil.iagl.idl.service.StoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +25,13 @@ public class StoryController {
             storyService.create(story);
         }
         return story;
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value="/delete/{id}")
+    public Integer delete(@PathVariable("id")final Integer id) {
+        if (id != null) {
+            storyService.delete(id);
+        }
+        return id;
     }
 }

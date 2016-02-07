@@ -11,5 +11,7 @@ public interface StoryDao {
 
     void create(@Param("story") Story story);
 
+    void delete(@Param("id") final Integer id);
+
     List<Story> getAll();
 }
