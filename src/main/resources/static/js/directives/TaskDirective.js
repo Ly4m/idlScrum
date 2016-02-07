@@ -14,7 +14,11 @@ angular.module('scrumboard')
             templateUrl: 'templates/scrumBoard/task.html',
             scope: {
                 header: "=",
-                description: "="
+                description: "=",
+                idTask: "="
+            },
+            controller: function($scope){
+                $scope.idTask = $scope.idTask;
             }
         };
     });

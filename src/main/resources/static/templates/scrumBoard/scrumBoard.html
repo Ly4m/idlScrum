@@ -1,4 +1,3 @@
-
 <sb-navbar current="scrumboard"></sb-navbar>
 
 <div class="row container-fluid">
@@ -15,26 +14,27 @@
         </thead>
         <tbody>
         <tr ng-repeat="story in stories">
-            <td><div class="well"><h4>{{story.text}}</h4></div>
+            <td>
+                <div class="well"><h4>{{story.text}}</h4></div>
             </td>
             <td>
                 <div ng-repeat="task in story.tasks | filter:{'state':0}">
-                    <sb-task header="task.name" description="task.description"></sb-task>
+                    <sb-task idTask="task.id" header="task.name" description="task.description"></sb-task>
                 </div>
             </td>
             <td>
                 <div ng-repeat="task in story.tasks | filter:{'state':1}">
-                    <sb-task header="task.name" description="task.description"></sb-task>
+                    <sb-task idTask="task.id"  header="task.name" description="task.description"></sb-task>
                 </div>
             </td>
             <td>
                 <div ng-repeat="task in story.tasks | filter:{'state':2}">
-                    <sb-task header="task.name" description="task.description"></sb-task>
+                    <sb-task idTask="task.id" header="task.name" description="task.description"></sb-task>
                 </div>
             </td>
             <td>
                 <div ng-repeat="task in story.tasks| filter:{'state':3}">
-                    <sb-task header="task.name" description="task.description"></sb-task>
+                    <sb-task idTask="task.id" header="task.name" description="task.description"></sb-task>
                 </div>
             </td>
         </tr>

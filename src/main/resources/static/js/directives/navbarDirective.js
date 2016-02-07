@@ -16,9 +16,15 @@ angular.module('scrumboard')
 
             },
             scope: {
-                current : "="
+                current: "="
             },
-            controller: function($scope){
+            controller: function ($scope, $http) {
+                $scope.refresh = function () {
+
+                    $http.get("/test/refresh").success(function (data) {
+
+                    });
+                };
             }
         };
-});
+    });
