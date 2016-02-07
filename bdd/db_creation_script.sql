@@ -1,31 +1,31 @@
-create table SCRUM_USER (
-  usr_id serial primary key,
-  usr_login varchar(60) unique,
-  usr_password varchar(60)
+CREATE TABLE SCRUM_USER (
+  usr_id       SERIAL PRIMARY KEY,
+  usr_login    VARCHAR(60) UNIQUE,
+  usr_password VARCHAR(60)
 );
 
-create table TASK (
-   tsk_id serial primary key,
-   tsk_name varchar(60) not null,
-   tsk_description varchar(1024),
-   tsk_id_usr integer references SCRUM_USER (usr_id),
-   tsk_id_str integer REFERENCES STORIES (str_id),
-   tsk_id_state integer not null
+CREATE TABLE TASK (
+  tsk_id          SERIAL PRIMARY KEY,
+  tsk_name        VARCHAR(60) NOT NULL,
+  tsk_description VARCHAR(1024),
+  tsk_id_usr      INTEGER REFERENCES SCRUM_USER (usr_id),
+  tsk_id_str      INTEGER REFERENCES STORIES (str_id),
+  tsk_id_state    INTEGER     NOT NULL
 );
 
-create table TEST (
-  tst_id serial primary key,
-  tst_name varchar(128) not null,
-  tst_validate boolean default false not null
+CREATE TABLE TEST (
+  tst_id       SERIAL PRIMARY KEY,
+  tst_name     VARCHAR(128)          NOT NULL,
+  tst_validate BOOLEAN DEFAULT FALSE NOT NULL
 );
 
-create table ASSOCIATION (
-  ass_id serial primary key,
-  ass_id_tsk Integer not null references TASK (tsk_id),
-  ass_id_tst Integer not null references TEST (tst_id)
+CREATE TABLE ASSOCIATION (
+  ass_id     SERIAL PRIMARY KEY,
+  ass_id_tsk INTEGER NOT NULL REFERENCES TASK (tsk_id),
+  ass_id_tst INTEGER NOT NULL REFERENCES TEST (tst_id)
 );
 
-create table STORIES(
-	str_id serial primary key,
-	str_text	VARCHAR(140) NOT NULL
+CREATE TABLE STORIES (
+  str_id   SERIAL PRIMARY KEY,
+  str_text VARCHAR(140) NOT NULL
 );

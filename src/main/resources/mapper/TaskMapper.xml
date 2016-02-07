@@ -3,64 +3,76 @@
 
 
 <mapper namespace="fil.iagl.idl.dao.TaskDao">
-	<resultMap type="fil.iagl.idl.entite.Task" id="Task_ResultMap">
-		<id property="id" column="tsk_id"/>
-		<result property="name" column="tsk_name"/>
-		<result property="description" column="tsk_description"/>
-		<result property="state" column="tsk_id_state"/>
-		<association property="user" column="tsk_id_usr" select="fil.iagl.idl.dao.UserDao.getById"/>
-	</resultMap>
-	
-	<insert id="create" useGeneratedKeys="true" keyColumn="tsk_id" keyProperty="task.id">
-		insert into TASK (
-		tsk_name,
-		tsk_description,
-		tsk_id_usr,
-		tsk_id_state
-		)
-		VALUES (
-		#{task.name},
-		#{task.description},
-		#{task.user.id},
-		#{task.state}
-		)
-	</insert>
-	
-	<update id="changeState">
-		update TASK set tsk_id_state =  #{state}
-		where tsk_id = #{id}
-	</update>
-	
-	<delete id="delete">
-		delete from TASK
-		where tsk_id = #{id}
-	</delete>
-	
-	<update id="update">
-		update TASK set tsk_name = #{name}, tsk_description  = #{description}
-		where tsk_id = #{id}
-	</update>
-	
-	<select id="getById" resultMap="Task_ResultMap">
-		select tsk_id, tsk_name, tsk_description, tsk_id_usr, tsk_id_state
-		from TASK
-		where tsk_id = #{idTask}
-	</select>
-	
-	<select id="getAll" resultMap="Task_ResultMap">
-		select tsk_id, tsk_name, tsk_description, tsk_id_usr, tsk_id_state
-		from TASK
-	</select>
+    <resultMap type="fil.iagl.idl.entite.Task" id="Task_ResultMap">
+        <id property="id" column="tsk_id"/>
+        <result property="name" column="tsk_name"/>
+        <result property="description" column="tsk_description"/>
+        <result property="state" column="tsk_id_state"/>
+        <association property="user" column="tsk_id_usr" select="fil.iagl.idl.dao.UserDao.getById"/>
+    </resultMap>
 
-	<select id="getByIdStory" resultMap="Task_ResultMap">
-		select
-			tsk_id,
-			tsk_name,
-			tsk_description,
-			tsk_id_usr,
-			tsk_id_state
-		from TASK
-		WHERE task.tsk_id_str = #{id}
-	</select>
+    <insert id="create" useGeneratedKeys="true" keyColumn="tsk_id" keyProperty="task.id">
+        INSERT INTO TASK (
+            tsk_name,
+            tsk_description,
+            tsk_id_usr,
+            tsk_id_state
+        )
+        VALUES (
+            #{task.name},
+            #{task.description},
+            #{task.user.id},
+            #{task.state}
+        )
+    </insert>
+
+    <update id="changeState">
+        UPDATE TASK
+        SET tsk_id_state = #{state}
+        WHERE tsk_id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM TASK
+        WHERE tsk_id = #{id}
+    </delete>
+
+    <update id="update">
+        UPDATE TASK
+        SET tsk_name = #{name}, tsk_description = #{description}
+        WHERE tsk_id = #{id}
+    </update>
+
+    <select id="getById" resultMap="Task_ResultMap">
+        SELECT
+            tsk_id,
+            tsk_name,
+            tsk_description,
+            tsk_id_usr,
+            tsk_id_state
+        FROM TASK
+        WHERE tsk_id = #{idTask}
+    </select>
+
+    <select id="getAll" resultMap="Task_ResultMap">
+        SELECT
+            tsk_id,
+            tsk_name,
+            tsk_description,
+            tsk_id_usr,
+            tsk_id_state
+        FROM TASK
+    </select>
+
+    <select id="getByIdStory" resultMap="Task_ResultMap">
+        SELECT
+            tsk_id,
+            tsk_name,
+            tsk_description,
+            tsk_id_usr,
+            tsk_id_state
+        FROM TASK
+        WHERE task.tsk_id_str = #{id}
+    </select>
 
 </mapper>

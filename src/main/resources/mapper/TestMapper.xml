@@ -3,36 +3,40 @@
 
 
 <mapper namespace="fil.iagl.idl.dao.TestDao">
-	<resultMap type="fil.iagl.idl.entite.Test" id="Test_ResultMap">
-		<id property="id" column="tst_id"/>
-		<result property="name" column="tst_name"/>
-		<result property="validate" column="tst_validate"/>
-	</resultMap>
+    <resultMap type="fil.iagl.idl.entite.Test" id="Test_ResultMap">
+        <id property="id" column="tst_id"/>
+        <result property="name" column="tst_name"/>
+        <result property="validate" column="tst_validate"/>
+    </resultMap>
 
-	<insert id="create" useGeneratedKeys="true" keyColumn="tst_id" keyProperty="test.id">
-		insert into TEST (tst_name, tst_validate)
-			VALUES (#{test.name}, #{test.validate})
-	</insert>
-	
-	<select id="getById" resultMap="Test_ResultMap">
-		select tst_id, tst_name, tst_validate
-		from TEST
-		where tst_id = #{idTest}
-	</select>
-	
-	<update id="changeState">
-		update tst_validate = #{validate}
-		from TEST
-		where tst_id = #{id}
-	</update>
-	
-	<delete id="delete">
-		delete from TEST
-		where tst_id=#{idTest}
-	</delete>
+    <insert id="create" useGeneratedKeys="true" keyColumn="tst_id" keyProperty="test.id">
+        INSERT INTO TEST (tst_name, tst_validate)
+        VALUES (#{test.name}, #{test.validate})
+    </insert>
 
-	<select id="getAll" resultMap="Test_ResultMap">
-		select * from test;
-	</select>
+    <select id="getById" resultMap="Test_ResultMap">
+        SELECT
+            tst_id,
+            tst_name,
+            tst_validate
+        FROM TEST
+        WHERE tst_id = #{idTest}
+    </select>
+
+    <update id="changeState">
+        UPDATE tst_validate = #{validate}
+        FROM TEST
+        WHERE tst_id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM TEST
+        WHERE tst_id = #{idTest}
+    </delete>
+
+    <select id="getAll" resultMap="Test_ResultMap">
+        SELECT *
+        FROM test;
+    </select>
 
 </mapper>
