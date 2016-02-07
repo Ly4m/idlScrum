@@ -1,0 +1,61 @@
+<sb-navbar current="stories"></sb-navbar>
+
+<div class="row container-fluid">
+
+    <div class="col-md-5 col-md-offset-1 well">
+
+        <div class="panel panel-default" ng-repeat="story in stories">
+            <div class="panel-heading"><h4>{{story.text}}</h4></div>
+            <div class="panel-body">
+                <div class="list-group">
+                    <a href="" class="list-group-item" ng-repeat="task in story.tasks">
+                        <span class="badge"
+                              ng-class="{'alert-primary': task.state == '0', 'alert-info': task.state == '1', 'alert-success': task.state == '2', 'alert-danger' : task.state == '3'}">{{states[task.state]}}</span>
+                        <h4 class="list-group-item-heading">{{task.name}}</h4>
+                        <p class="list-group-item-text">{{task.description}}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+
+        <form class="form-horizontal" ng-submit="addTask()">
+            <fieldset>
+                <legend>Add a task</legend>
+                <div class="form-group">
+                    <label for="inputName" class="col-lg-2 control-label">Name</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputName" placeholder="Name" required
+                               ng-model="newTask.name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputDescription" class="col-lg-2 control-label">Description</label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control" rows="3" id="inputDescription"
+                                  placeholder="The description of the task." required
+                                  ng-model="newTask.description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="storySelect" class="col-lg-2 control-label">Select a story</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" id="storySelect" ng-model="newTask.story.id" required>
+                            <option ng-repeat="story in stories" value="{{story.id}}">{{story.text}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+
+</div>

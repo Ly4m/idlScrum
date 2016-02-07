@@ -16,13 +16,15 @@
             tsk_name,
             tsk_description,
             tsk_id_usr,
-            tsk_id_state
+            tsk_id_state,
+            tsk_id_str
         )
         VALUES (
             #{task.name},
             #{task.description},
             #{task.user.id},
-            #{task.state}
+            #{task.state},
+            #{task.story.id}
         )
     </insert>
 

@@ -9,7 +9,7 @@ CREATE TABLE TASK (
   tsk_name        VARCHAR(60) NOT NULL,
   tsk_description VARCHAR(1024),
   tsk_id_usr      INTEGER REFERENCES SCRUM_USER (usr_id),
-  tsk_id_str      INTEGER REFERENCES STORIES (str_id),
+  tsk_id_str      INTEGER REFERENCES STORIES (str_id) NOT NULL ,
   tsk_id_state    INTEGER     NOT NULL
 );
 

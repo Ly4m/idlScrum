@@ -39,10 +39,7 @@ angular.module('scrumboard')
             }).success(function (data) {
                 $scope.refresh();
             });
-
-
-        }
-        ;
+        };
 
         $scope.refresh();
 

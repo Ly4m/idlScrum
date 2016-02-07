@@ -7,7 +7,6 @@
         <ul class="list-group">
             <li class="list-group-item" ng-repeat="story in stories">
                 <span class="badge">{{story.tasks.length}}</span>
-
                 {{story.text}}
                 <button class="btn btn-danger btn-xs pull-right" style="margin-right: 10px" ng-click="deleteStory(story.id)">Delete</button>
             </li>
@@ -23,7 +22,7 @@
                     <label for="inputText" class="col-lg-2 control-label">Text</label>
                     <div class="col-lg-10">
                         <input ng-model="newStory.text" type="text" class="form-control" id="inputText"
-                               placeholder="As a [USER] I want to [ACTION] so that [GOAL]">
+                               placeholder="As a [USER] I want to [ACTION] so that [GOAL]" required>
                     </div>
                 </div>
                 <div class="form-group">

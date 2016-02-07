@@ -19,4 +19,6 @@ public class Task {
 
     private Integer state;
 
+    private Story story;
+
 }
