@@ -12,7 +12,7 @@ public interface TestService {
 	
 	void changeState(Integer id, Boolean validate);
 	
-	void delete(Integer id);
+	void deleteAll();
 	
 	Test getbyId(Integer id);
 

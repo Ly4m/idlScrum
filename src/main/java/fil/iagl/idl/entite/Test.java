@@ -9,7 +9,16 @@ import lombok.ToString;
 @ToString
 public class Test {
 
-	private Integer id;
-	private String name;
-	private Boolean validate;
+    private Integer id;
+    private String name;
+    private Boolean validate;
+
+    public Test(){
+
+    }
+
+    public Test(String name, Boolean validate) {
+        this.name = name;
+        this.validate = validate;
+    }
 }

@@ -10,42 +10,41 @@ import fil.iagl.idl.service.TestService;
 import java.util.List;
 
 @Service
-public class TestServiceImpl implements TestService{
-	@Autowired
-	TestDao testDao;
-	
-	@Override
-	public void create(Test test) {
-		if(test != null){
-			testDao.create(test);
-		}
-	}
+public class TestServiceImpl implements TestService {
 
-	@Override
-	public void changeState(Integer id, Boolean validate) {
-		if(id !=null && validate != null){
-			testDao.changeState(id, validate);
-		}
-	}
+    @Autowired
+    TestDao testDao;
 
-	@Override
-	public void delete(Integer id) {
-		if(id != null ){
-			testDao.delete(id);
-		}
-	}
+    @Override
+    public void create(Test test) {
+        if (test != null) {
+            testDao.create(test);
+        }
+    }
 
-	@Override
-	public Test getbyId(Integer id) {
-		if(id !=null){
-			testDao.getById(id);
-		}
-		return null;
-	}
+    @Override
+    public void changeState(Integer id, Boolean validate) {
+        if (id != null && validate != null) {
+            testDao.changeState(id, validate);
+        }
+    }
 
-	@Override
-	public List<Test> getAll() {
-		return testDao.getAll();
-	}
+    @Override
+    public void deleteAll() {
+        testDao.deleteAll();
+    }
+
+    @Override
+    public Test getbyId(Integer id) {
+        if (id != null) {
+            testDao.getById(id);
+        }
+        return null;
+    }
+
+    @Override
+    public List<Test> getAll() {
+        return testDao.getAll();
+    }
 
 }

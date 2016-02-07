@@ -10,7 +10,7 @@ public interface TestDao {
 
 	void changeState(@Param("id") Integer id, @Param("validate") Boolean validate);
 
-	void delete(@Param("id") Integer id);
+	void deleteAll();
 
 	Test getById(@Param("idTest") Integer idTest);
 

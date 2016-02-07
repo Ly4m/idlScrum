@@ -29,9 +29,8 @@
         WHERE tst_id = #{id}
     </update>
 
-    <delete id="delete">
+    <delete id="deleteAll">
         DELETE FROM TEST
-        WHERE tst_id = #{idTest}
     </delete>
 
     <select id="getAll" resultMap="Test_ResultMap">
