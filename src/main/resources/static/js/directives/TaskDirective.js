@@ -1,6 +1,6 @@
 /**
  * @ngdoc directive
- * @name scrumboard:TaskDirective
+ * @name scrumboard:sbTask
  *
  * @description
  *

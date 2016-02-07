@@ -7,4 +7,10 @@ angular.module('scrumboard')
 
         });
 
+        $http.get("/test/all").success(function(data){
+
+
+
+        });
+
     });

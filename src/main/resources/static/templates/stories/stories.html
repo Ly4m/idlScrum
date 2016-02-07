@@ -1,0 +1,39 @@
+<sb-navbar></sb-navbar>
+
+<div class="row container-fluid">
+
+    <div class="col-md-6">
+
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="story in stories">
+                <span class="badge">{{story.tasks.length}}</span>
+
+                {{story.text}}
+                <a href="#" class="btn btn-danger btn-xs pull-right" style="margin-right: 10px">Delete</a>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="col-md-5">
+        <form class="form-horizontal" ng-submit="addStory()">
+            <fieldset>
+                <legend>Add a new user story</legend>
+                <div class="form-group">
+                    <label for="inputText" class="col-lg-2 control-label">Text</label>
+                    <div class="col-lg-10">
+                        <input ng-model="newStory.text" type="text" class="form-control" id="inputText"
+                               placeholder="As a [USER] I want to [ACTION] so that [GOAL]">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+</div>

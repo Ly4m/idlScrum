@@ -20,4 +20,9 @@ public class StoryServiceImpl implements StoryService {
 		return storyDao.getAll();
 	}
 
+	@Override
+	public void create(Story story) {
+		storyDao.create(story);
+	}
+
 }

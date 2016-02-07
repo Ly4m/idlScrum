@@ -1,14 +1,15 @@
 package fil.iagl.idl.service;
 
-import java.util.List;
-
+import fil.iagl.idl.entite.Story;
 import org.springframework.stereotype.Service;
 
-import fil.iagl.idl.entite.Story;
+import java.util.List;
 
 @Service
 public interface StoryService {
 
-	public List<Story> getAll();
+	List<Story> getAll();
+
+	void create(Story story);
 
 }

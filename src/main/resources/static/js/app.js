@@ -10,6 +10,10 @@ angular.module('scrumboard', ['ngRoute'])
                 templateUrl: '../templates/scrumBoard/scrumBoard.html',
                 controller: 'ScrumBoardCtrl'
             })
+            .when('/stories', {
+                templateUrl: '../templates/stories/stories.html',
+                controller: 'StoriesCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

@@ -1,14 +1,15 @@
 package fil.iagl.idl.dao;
 
-import java.util.List;
-
+import fil.iagl.idl.entite.Story;
 import org.apache.ibatis.annotations.Param;
 
-import fil.iagl.idl.entite.Story;
+import java.util.List;
 
 public interface StoryDao {
 
-	Story getById(@Param("id") final Integer id);
+    Story getById(@Param("id") final Integer id);
 
-	List<Story> getAll();
+    void create(@Param("story") Story story);
+
+    List<Story> getAll();
 }
