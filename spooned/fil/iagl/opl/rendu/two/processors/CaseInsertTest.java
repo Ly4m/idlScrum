@@ -30,8 +30,8 @@ import instrumenting._Instrumenting;
 
 public class CaseInsertTest {
     @Test
-    @CorrespondingTask(taskName = "yolo")
-    @CorrespondingTask(taskName = "yolo2")
+    @CorrespondingTask(taskName = "task2")
+    @CorrespondingTask(taskName = "task1")
     public void instrumentSwitchTest() throws Exception {
         Launcher l = new Launcher();
         l.addInputResource("src/test/java");

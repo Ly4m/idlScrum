@@ -18,7 +18,7 @@ public class AnnotationProcessor extends AbstractProcessor<CtMethod<?>> {
 	@Override
 	public void process(CtMethod<?> element) {
 		String className = element.getParent().getSignature() + "." + element.getSimpleName();
-		if (!ScrumApplication.associationMap.keySet().contains(className)) {
+		if (!ScrumApplication.associationMap.keySet().contains(className.substring(6))) {
 			ScrumApplication.associationMap.put(className, new ArrayList<String>());
 		}
 		for (CtAnnotation annotation : element.getAnnotations()) {

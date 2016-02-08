@@ -32,6 +32,7 @@ import instrumenting._Instrumenting;
 
 public class ConstructorInsertTest {
     @Test
+    @CorrespondingTask(taskName = "task3")
     public void instrumentConstructorTest() throws Exception {
         Launcher l = new Launcher();
         l.addInputResource("src/test/java");
