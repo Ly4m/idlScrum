@@ -1,11 +1,10 @@
 package fil.iagl.idl.service;
 
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import fil.iagl.idl.entite.State;
 import fil.iagl.idl.entite.Task;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface TaskService {
@@ -16,9 +15,11 @@ public interface TaskService {
 
 	void delete(Integer id);
 
-	void update(Integer id, String name, String description);
+	void update(Task task);
 
 	Task getById(Integer idTask);
 
 	List<Task> getAll();
+
+	void LinkToUser(Integer taskId, Integer userId);
 }

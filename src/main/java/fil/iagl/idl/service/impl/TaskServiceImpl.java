@@ -1,14 +1,13 @@
 package fil.iagl.idl.service.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import fil.iagl.idl.dao.TaskDao;
 import fil.iagl.idl.entite.State;
 import fil.iagl.idl.entite.Task;
 import fil.iagl.idl.service.TaskService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -38,9 +37,9 @@ public class TaskServiceImpl implements TaskService {
 	}
 
 	@Override
-	public void update(Integer id, String name, String description) {
-		if (id != null && name != null && description != null) {
-			taskDao.update(id, name, description);
+	public void update(Task task) {
+		if (task != null) {
+			taskDao.update(task);
 		}
 	}
 
@@ -55,6 +54,11 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public List<Task> getAll() {
 		return taskDao.getAll();
+	}
+
+	@Override
+	public void LinkToUser(Integer taskId, Integer userId) {
+		taskDao.linkToUser(taskId, userId);
 	}
 
 }

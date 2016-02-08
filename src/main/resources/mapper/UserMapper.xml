@@ -38,5 +38,13 @@
         )
     </insert>
 
+    <select id="getAll" resultMap="User_ResultMap">
+        SELECT
+        usr_id,
+        usr_login,
+        usr_password
+        FROM SCRUM_USER
+    </select>
+
 
 </mapper>
