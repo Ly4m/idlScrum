@@ -12,6 +12,7 @@ import fil.iagl.opl.rendu.two.insert.impl.CaseInsert;
 import fil.iagl.opl.rendu.two.processors.CaseInsertTest;
 import fil.iagl.opl.rendu.two.insert.impl.CatchInsert;
 import fil.iagl.opl.rendu.two.processors.CatchInsertTest;
+import fil.iagl.opl.rendu.two.processors.ConstructorCoolTest;
 import fil.iagl.opl.rendu.two.insert.impl.ConstructorInsert;
 import fil.iagl.opl.rendu.two.processors.ConstructorInsertTest;
 import fil.iagl.opl.rendu.two.samples.ConstructorSample;

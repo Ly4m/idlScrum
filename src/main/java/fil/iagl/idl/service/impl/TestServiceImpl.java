@@ -52,4 +52,9 @@ public class TestServiceImpl implements TestService {
 		testDao.delete(id);
 	}
 
+	@Override
+	public Test getByName(String name) {
+		return testDao.getByName(name);
+	}
+
 }

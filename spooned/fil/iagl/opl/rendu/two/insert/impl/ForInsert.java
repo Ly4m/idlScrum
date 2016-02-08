@@ -8,6 +8,7 @@ import fil.iagl.opl.rendu.two.processors.BeforeInsertTest;
 import fil.iagl.opl.rendu.two.samples.BeforeSample;
 import fil.iagl.opl.rendu.two.processors.CaseInsertTest;
 import fil.iagl.opl.rendu.two.processors.CatchInsertTest;
+import fil.iagl.opl.rendu.two.processors.ConstructorCoolTest;
 import fil.iagl.opl.rendu.two.processors.ConstructorInsertTest;
 import fil.iagl.opl.rendu.two.samples.ConstructorSample;
 import fil.iagl.opl.rendu.two.processors.CorrespondingTask;
