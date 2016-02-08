@@ -18,6 +18,11 @@
         DELETE FROM ASSOCIATION
         WHERE ass_id = #{idAssociation}
     </delete>
+    
+    <delete id="deleteForTestId">
+    	DELETE FROM ASSOCIATION
+    	WHERE ass_id_tst = #{idTest}
+    </delete>
 
     <select id="getAllForTask" resultMap="Association_ResultMap">
         SELECT
@@ -27,4 +32,6 @@
         FROM ASSOCIATION
         WHERE ass_tsk_id = #{idTask}
     </select>
+    
+    
 </mapper>

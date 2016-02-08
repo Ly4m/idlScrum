@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -22,6 +23,7 @@ import fil.iagl.idl.entite.Test;
 import fil.iagl.idl.maven.MavenRunner;
 import fil.iagl.idl.parser.Resultat;
 import fil.iagl.idl.parser.XMLParser;
+import fil.iagl.idl.service.AssociationService;
 import fil.iagl.idl.service.TaskService;
 import fil.iagl.idl.service.TestService;
 
@@ -35,6 +37,9 @@ public class TestController {
 	@Autowired
 	TaskService taskService;
 
+	@Autowired
+	AssociationService associationService;
+
 	@RequestMapping("/refresh")
 	@ResponseBody
 	public void test() {
@@ -44,7 +49,7 @@ public class TestController {
 			List<Test> testReport = res.getTests();
 
 			List<Task> tasks = taskService.getAll();
-			List<Test> toDelete = new ArrayList();
+			List<Test> toDelete = new ArrayList<>();
 			for (Task task : tasks) {
 				for (Test t : task.getTests()) {
 					if (!testReport.contains(t)) {
@@ -52,6 +57,7 @@ public class TestController {
 					}
 				}
 			}
+			toDelete.forEach(t -> associationService.deleteForTestId(t.getId()));
 			toDelete.forEach(t -> testService.delete(t.getId()));
 			// Mise a jour des tests
 			res.getTests().forEach(test -> testService.changeState(test.getId(), test.getValidate()));
@@ -59,6 +65,22 @@ public class TestController {
 			for (Task task : tasks) {
 				if (task.getTests().isEmpty()) {
 					taskService.changeState(task.getId(), State.TODO);
+				} else {
+					Boolean isValid = task.getTests().stream().anyMatch(new Predicate<Test>() {
+
+						@Override
+						public boolean test(Test t) {
+							return t.getValidate() == false;
+						}
+					});
+
+					if (isValid) {
+						taskService.changeState(task.getId(), State.DONE);
+					} else if (task.getState().equals(State.DONE)) {
+						taskService.changeState(task.getId(), State.TEST_FAIL);
+					} else {
+						taskService.changeState(task.getId(), State.DOING);
+					}
 				}
 
 			}
