@@ -15,4 +15,6 @@ public interface AssociationService {
 	List<Association> getAllForTask(Integer idTask);
 
 	void deleteForTestId(Integer idTest);
+
+	void addByTestName(String testName, String taskName);
 }

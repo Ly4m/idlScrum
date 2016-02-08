@@ -22,6 +22,12 @@
         FROM TEST
         WHERE tst_id = #{idTest}
     </select>
+    
+    <select id="getByName" resultMap="Test_ResultMap">
+    	SELECT tst_id, tst_name, tst_validate
+    	FROM TEST
+    	WHERE tst_name = #{testName}
+    </select>
 
     <update id="changeState">
         UPDATE TEST

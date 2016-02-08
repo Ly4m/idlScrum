@@ -1,5 +1,10 @@
 package fil.iagl.idl;
 
+import java.util.List;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -10,14 +15,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Controller;
 
-import javax.sql.DataSource;
-
 @Controller
 @SpringBootApplication
 @MapperScan(value = "fil.iagl.idl.dao")
 public class ScrumApplication {
+	// mvn test -DskipTests
+	// mvn dependency:build-classpath
 
-	public static final String PATH_TO_POM = "C:/workspace/HotelApp/HotelDatabase";
+	public static final String PATH_TO_POM = "C:/workspace/CoCoSpoon";
+
+	public static Map<String, List<String>> associationMap;
 
 	@Bean
 	public DataSource dataSource() {
@@ -27,14 +34,12 @@ public class ScrumApplication {
 		// url to dev at home
 		ds.setUsername("postgres");
 		ds.setPassword("postgres");
-		ds.setUrl("jdbc:postgresql://localhost:5433/IDL4");
+		ds.setUrl("jdbc:postgresql://localhost:5432/IDL4");
 
 		ds.setDriverClassName("org.postgresql.Driver");
 		ds.setMaxWait(25);
 		return ds;
 	}
-
-	// gnn
 
 	@Bean
 	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
@@ -50,19 +55,5 @@ public class ScrumApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ScrumApplication.class, args);
 	}
-
-	// @Override
-	// public void run(String... args) throws Exception {
-	// RestTemplate restTemplate = new RestTemplate();
-	// Report[] quote =
-	// restTemplate.getForObject("http://travis-ci.org/Piorunj/HotelApp",
-	// Report[].class);
-	// ClientHttpRequest client = restTemplate.getRequestFactory()
-	// .createRequest(new URI("https://api.travis-ci.org/jobs"),
-	// HttpMethod.GET);
-	// ClientHttpResponse response = client.execute();
-	//
-	// System.out.println(quote.toString().length());
-	// }
 
 }

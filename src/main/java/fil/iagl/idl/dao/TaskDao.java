@@ -1,9 +1,10 @@
 package fil.iagl.idl.dao;
 
-import fil.iagl.idl.entite.Task;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
+import fil.iagl.idl.entite.Task;
 
 public interface TaskDao {
 
@@ -19,7 +20,9 @@ public interface TaskDao {
 
 	void deleteByIdStory(@Param("idStory") Integer idStory);
 
-	List<Task> getByIdStory(@Param("id")Integer idStory);
+	List<Task> getByIdStory(@Param("id") Integer idStory);
 
 	List<Task> getAll();
+
+	Task getByName(@Param("taskName") String taskName);
 }
