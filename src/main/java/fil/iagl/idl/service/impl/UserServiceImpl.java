@@ -7,6 +7,8 @@ import fil.iagl.idl.dao.UserDao;
 import fil.iagl.idl.entite.User;
 import fil.iagl.idl.service.UserService;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService{
 	@Autowired
@@ -33,6 +35,11 @@ public class UserServiceImpl implements UserService{
 			return userDao.getById(id);
 		}
 		return null;
+	}
+
+	@Override
+	public List<User> getAll() {
+		return userDao.getAll();
 	}
 
 }

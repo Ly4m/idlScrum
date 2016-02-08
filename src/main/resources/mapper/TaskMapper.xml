@@ -8,8 +8,9 @@
         <result property="name" column="tsk_name"/>
         <result property="description" column="tsk_description"/>
         <result property="state" column="tsk_id_state"/>
+        <association property="story" column="tsk_id_str" select="fil.iagl.idl.dao.StoryDao.getById"/>
         <association property="user" column="tsk_id_usr" select="fil.iagl.idl.dao.UserDao.getById"/>
-        <collection property="tests" column = "tsk_id" select="fil.iagl.idl.dao.TestDao.getByTaskId"/>
+        <collection property="tests" column="tsk_id" select="fil.iagl.idl.dao.TestDao.getByTaskId"/>
     </resultMap>
 
     <insert id="create" useGeneratedKeys="true" keyColumn="tsk_id" keyProperty="task.id">
@@ -42,8 +43,15 @@
 
     <update id="update">
         UPDATE TASK
-        SET tsk_name = #{name}, tsk_description = #{description}
-        WHERE tsk_id = #{id}
+        SET tsk_name = #{task.name}, tsk_description = #{task.description}, tsk_id_str = #{task.story.id},
+        tsk_id_usr = #{task.user.id}
+        WHERE tsk_id = #{task.id}
+    </update>
+
+    <update id="linkToUser">
+        UPDATE TASK
+        SET tsk_id_usr = #{userId}
+        WHERE tsk_id = #{taskId}
     </update>
 
     <select id="getById" resultMap="Task_ResultMap">
@@ -52,7 +60,8 @@
             tsk_name,
             tsk_description,
             tsk_id_usr,
-            tsk_id_state
+        tsk_id_state,
+        tsk_id_str
         FROM TASK
         WHERE tsk_id = #{idTask}
     </select>
@@ -64,6 +73,7 @@
             tsk_description,
             tsk_id_usr,
             tsk_id_state
+
         FROM TASK
         WHERE tsk_name = #{taskName}
     </select>
