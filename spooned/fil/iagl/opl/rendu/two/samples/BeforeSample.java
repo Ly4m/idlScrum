@@ -6,7 +6,6 @@ import java.util.Arrays;
 import org.fest.assertions.Assertions;
 import fil.iagl.opl.rendu.two.insert.impl.BeforeInsert;
 import fil.iagl.opl.rendu.two.processors.BeforeInsertTest;
-import fil.iagl.opl.rendu.two.insert.impl.CaseInsert;
 import fil.iagl.opl.rendu.two.processors.CaseInsertTest;
 import fil.iagl.opl.rendu.two.insert.impl.CatchInsert;
 import fil.iagl.opl.rendu.two.processors.CatchInsertTest;

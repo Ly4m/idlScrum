@@ -14,7 +14,7 @@ public interface TaskDao {
 
 	void delete(@Param("id") Integer id);
 
-	void update(@Param("id") Integer id, @Param("name") String name, @Param("description") String description);
+	void update(@Param("task") Task task);
 
 	Task getById(@Param("idTask") Integer idTask);
 
@@ -25,4 +25,7 @@ public interface TaskDao {
 	List<Task> getAll();
 
 	Task getByName(@Param("taskName") String taskName);
+
+	void linkToUser(@Param("taskId") Integer taskId, @Param("userId") Integer userId);
+
 }

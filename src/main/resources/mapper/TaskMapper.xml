@@ -77,6 +77,11 @@
         FROM TASK
         WHERE tsk_name = #{taskName}
     </select>
+    
+    <select id="getAll" resultMap="Task_ResultMap">
+    	SELECT *
+    	FROM TASK
+    </select>
 
     <select id="getByIdStory" resultMap="Task_ResultMap">
         SELECT

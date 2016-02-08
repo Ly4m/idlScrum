@@ -88,6 +88,7 @@ public class AppTest extends TestCase {
         return new TestSuite(AppTest.class);
     }
 
+    @CorrespondingTask(taskName = "task1")
     public void testApp() {
         TestCase.assertTrue(true);
     }
