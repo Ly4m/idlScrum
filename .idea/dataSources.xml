@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2767007549">
+  <component name="DataSourceManagerImpl" format="xml" hash="2162462841">
     <data-source source="LOCAL" name="PostgreSQL - postgres@localhost" uuid="8ccdf85f-f8fd-4301-aadb-842754d03d01">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
@@ -8,6 +8,12 @@
       <jdbc-url>jdbc:postgresql://localhost:5433/postgres</jdbc-url>
     </data-source>
     <data-source source="LOCAL" name="PostgreSQL - IDL4@localhost" uuid="54fd8350-1992-4689-ae81-62b5a19be1d1">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5433/IDL4</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - IDL4@localhost [2]" uuid="2f04de8d-a073-483e-8b39-924eaf0782ba">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>

@@ -29,65 +29,81 @@ import java.util.stream.Collectors;
 @RequestMapping("/test")
 public class TestController {
 
-	@Autowired
-	TestService testService;
+    @Autowired
+    TestService testService;
 
-	@Autowired
-	TaskService taskService;
+    @Autowired
+    TaskService taskService;
 
-	@Autowired
-	AssociationService associationService;
+    @Autowired
+    AssociationService associationService;
 
-	@RequestMapping("/refresh")
-	@ResponseBody
-	public void test() {
-		try {
-			MavenRunner.cleanCompileTest(ScrumApplication.PATH_TO_POM);
-			Resultat res = XMLParser.readSurefireReport(new File(ScrumApplication.PATH_TO_POM + "/target"));
+    @RequestMapping("/refresh")
+    @ResponseBody
+    public void test() {
+        try {
+            MavenRunner.cleanCompileTest(ScrumApplication.PATH_TO_POM);
+            Resultat res = XMLParser.readSurefireReport(new File(ScrumApplication.PATH_TO_POM + "/target"));
 
-			List<Test> oldTests = testService.getAll();
+            List<Test> oldTests = testService.getAll();
 
-			List<Test> toAdd = new ArrayList<>();
-			toAdd.addAll(res.getTests().stream().filter(t -> !oldTests.contains(t)).collect(Collectors.toList()));
+            List<Test> toAdd = new ArrayList<>();
+            toAdd.addAll(res.getTests().stream().filter(t -> {
+                for (Test ot : oldTests) {
+                    if (t.getName().equals(ot.getName())) {
+                        return false;
+                    }
+                }
+                return true;
+            }).collect(Collectors.toList()));
 
-			List<Test> toDelete = new ArrayList<>();
-			toDelete.addAll(oldTests.stream().filter(t -> !res.getTests().contains(t)).collect(Collectors.toList()));
+            List<Test> toDelete = new ArrayList<>();
 
-			toDelete.forEach(t -> associationService.deleteForTestId(t.getId()));
-			toDelete.forEach(t -> testService.delete(t.getId()));
-			toAdd.forEach(t -> testService.create(t));
+            toDelete.addAll(oldTests.stream().filter(t -> {
+                for (Test nt : res.getTests()) {
+                    if (t.getName().equals(nt.getName())) {
+                        return false;
+                    }
+                }
+                return true;
+            }).collect(Collectors.toList()));
 
-			// Mise a jour des tests
-			res.getTests().forEach(test -> testService.changeState(test.getId(), test.getValidate()));
+            toDelete.forEach(t -> associationService.deleteForTestId(t.getId()));
+            toDelete.forEach(t -> testService.delete(t.getId()));
 
-			// détermine l'état des taches
-			List<Task> tasks = taskService.getAll();
+            toAdd.forEach(t -> testService.create(t));
 
-			for (Task task : tasks) {
-				if (task.getTests().isEmpty()) {
-					taskService.changeState(task.getId(), State.TODO);
-				} else {
-					Boolean isValid = task.getTests().stream().anyMatch(t -> !t.getValidate());
+            // Mise a jour des tests
+            res.getTests().forEach(test -> testService.changeState(test.getId(), test.getValidate()));
 
-					if (isValid) {
-						taskService.changeState(task.getId(), State.DONE);
-					} else if (task.getState().equals(State.DONE)) {
-						taskService.changeState(task.getId(), State.TEST_FAIL);
-					} else {
-						taskService.changeState(task.getId(), State.DOING);
-					}
-				}
+            // détermine l'état des taches
+            List<Task> tasks = taskService.getAll();
 
-			}
+            for (Task task : tasks) {
+                if (task.getTests().isEmpty()) {
+                    taskService.changeState(task.getId(), State.TODO);
+                } else {
+                    Boolean isNotValid = task.getTests().stream().anyMatch(t -> !t.getValidate());
 
-		} catch (SAXException | IOException | ParserConfigurationException | MavenInvocationException e) {
-			e.printStackTrace();
-		}
-	}
+                    if (isNotValid && task.getState().equals(State.DONE)) {
+                        taskService.changeState(task.getId(), State.TEST_FAIL);
+                    } else if (isNotValid) {
+                        taskService.changeState(task.getId(), State.DOING);
+                    } else {
+                        taskService.changeState(task.getId(), State.DONE);
+                    }
+                }
 
-	@RequestMapping(method = RequestMethod.GET, value = "/all")
-	public List<Test> getTasks() {
-		return testService.getAll();
-	}
+            }
+
+        } catch (SAXException | IOException | ParserConfigurationException | MavenInvocationException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/all")
+    public List<Test> getTasks() {
+        return testService.getAll();
+    }
 
 }

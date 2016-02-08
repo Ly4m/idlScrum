@@ -10,7 +10,7 @@
                 <div class="list-group">
                     <a href="#/task/{{task.id}}" class="list-group-item" ng-repeat="task in story.tasks">
                         <span class="badge"
-                              ng-class="{'alert-primary': task.state == '1', 'alert-info': task.state == '2', 'alert-success': task.state == '3', 'alert-danger' : task.state == '4'}">{{states[task.state]}}</span>
+                              ng-class="{'alert-primary': task.state == '1', 'alert-info': task.state == '2', 'alert-success': task.state == '3', 'alert-danger' : task.state == '4'}">{{states[task.state-1]}}</span>
                         <h4 class="list-group-item-heading">{{task.name}}</h4>
                         <p class="list-group-item-text">{{task.description}}</p>
                     </a>

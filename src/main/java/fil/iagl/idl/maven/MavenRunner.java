@@ -1,16 +1,16 @@
 package fil.iagl.idl.maven;
 
-import java.io.File;
-import java.util.Arrays;
-
 import org.apache.maven.shared.invoker.DefaultInvocationRequest;
 import org.apache.maven.shared.invoker.DefaultInvoker;
 import org.apache.maven.shared.invoker.InvocationRequest;
 import org.apache.maven.shared.invoker.MavenInvocationException;
 
+import java.io.File;
+import java.util.Arrays;
+
 public class MavenRunner {
 
-	private static final String MAVEN_HOME_PATH = "C:/Program Files/apache-maven-3.3.3";
+	private static final String MAVEN_HOME_PATH = "C:/Program Files/apache-maven-3.3.9";
 
 	public static void cleanCompileTest(String pomLocation) throws MavenInvocationException {
 		InvocationRequest request = new DefaultInvocationRequest();
