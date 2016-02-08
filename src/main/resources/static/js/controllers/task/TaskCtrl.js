@@ -14,7 +14,4 @@ angular.module('scrumboard')
                     $scope.task = data;
             });
 
-
-
-
 });

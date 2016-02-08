@@ -1,7 +1,5 @@
 package fil.iagl.idl;
 
-import javax.sql.DataSource;
-
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -11,6 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Controller;
+
+import javax.sql.DataSource;
 
 @Controller
 @SpringBootApplication
@@ -26,8 +26,8 @@ public class ScrumApplication {
 
 		// url to dev at home
 		ds.setUsername("postgres");
-		ds.setPassword("postgre");
-		ds.setUrl("jdbc:postgresql://localhost:5432/IDL4");
+		ds.setPassword("postgres");
+		ds.setUrl("jdbc:postgresql://localhost:5433/IDL4");
 
 		ds.setDriverClassName("org.postgresql.Driver");
 		ds.setMaxWait(25);

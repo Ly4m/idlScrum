@@ -1,10 +1,9 @@
 package fil.iagl.idl.dao;
 
-import java.util.List;
-
+import fil.iagl.idl.entite.Test;
 import org.apache.ibatis.annotations.Param;
 
-import fil.iagl.idl.entite.Test;
+import java.util.List;
 
 public interface TestDao {
 	void create(@Param("test") Test test);
@@ -18,5 +17,7 @@ public interface TestDao {
 	List<Test> getAll();
 
 	void delete(@Param("id") Integer id);
+
+	List<Test> getByTaskId(@Param("id") Integer id);
 
 }

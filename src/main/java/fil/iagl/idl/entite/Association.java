@@ -12,4 +12,5 @@ public class Association {
 	private Integer id;
 	private Task task;
 	private Test test;
+
 }

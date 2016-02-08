@@ -22,26 +22,31 @@
         FROM TEST
         WHERE tst_id = #{idTest}
     </select>
-    
 
     <update id="changeState">
-        UPDATE tst_validate = #{validate}
-        FROM TEST
+        UPDATE TEST
+        SET tst_validate = #{validate}
         WHERE tst_id = #{id}
     </update>
 
     <delete id="deleteAll">
         DELETE FROM TEST
     </delete>
-    
+
     <delete id="delete">
-  	  DELETE FROM TEST
- 	   WHERE tst_id = #{id}
+        DELETE FROM TEST
+        WHERE tst_id = #{id}
     </delete>
 
     <select id="getAll" resultMap="Test_ResultMap">
         SELECT *
         FROM test;
+    </select>
+
+    <select id="getByTaskId" resultMap="Test_ResultMap">
+        SELECT *
+        FROM test, association
+        WHERE tst_id = ass_id_tst AND ass_id_tsk = #{id}
     </select>
 
 </mapper>

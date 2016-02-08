@@ -9,7 +9,7 @@
         <result property="description" column="tsk_description"/>
         <result property="state" column="tsk_id_state"/>
         <association property="user" column="tsk_id_usr" select="fil.iagl.idl.dao.UserDao.getById"/>
-        <collection property="tests" column = "tsk_id" select="fil.iagl.idl.dao.AssociationDao.getAllForTask"/>
+        <collection property="tests" column = "tsk_id" select="fil.iagl.idl.dao.TestDao.getByTaskId"/>
     </resultMap>
 
     <insert id="create" useGeneratedKeys="true" keyColumn="tsk_id" keyProperty="task.id">

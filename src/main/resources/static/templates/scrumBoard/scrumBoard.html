@@ -18,13 +18,8 @@
                 <div class="well"><h4>{{story.text}}</h4></div>
             </td>
             <td>
-                <div ng-repeat="task in story.tasks | filter:{'state':0}">
-                    <sb-task idTask="task.id" header="task.name" description="task.description"></sb-task>
-                </div>
-            </td>
-            <td>
                 <div ng-repeat="task in story.tasks | filter:{'state':1}">
-                    <sb-task idTask="task.id"  header="task.name" description="task.description"></sb-task>
+                    <sb-task idTask="{{task.id}}" header="task.name" description="task.description"></sb-task>
                 </div>
             </td>
             <td>
@@ -33,7 +28,12 @@
                 </div>
             </td>
             <td>
-                <div ng-repeat="task in story.tasks| filter:{'state':3}">
+                <div ng-repeat="task in story.tasks | filter:{'state':3}">
+                    <sb-task idTask="task.id" header="task.name" description="task.description"></sb-task>
+                </div>
+            </td>
+            <td>
+                <div ng-repeat="task in story.tasks| filter:{'state':4}">
                     <sb-task idTask="task.id" header="task.name" description="task.description"></sb-task>
                 </div>
             </td>

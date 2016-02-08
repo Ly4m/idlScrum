@@ -4,7 +4,7 @@
 <mapper namespace="fil.iagl.idl.dao.AssociationDao">
     <resultMap type="fil.iagl.idl.entite.Association" id="Association_ResultMap">
         <id property="id" column="ass_id"/>
-        <association property="task" column="ass_id_tsk" select="fil.iagl.idl.dao.TaskDao.getById"/>
+        <!--<association property="task" column="ass_id_tsk" select="fil.iagl.idl.dao.TaskDao.getById"/>-->
         <!-- association ou collection pour  test ? -->
         <association property="test" column="ass_id_test" select="fil.iagl.idl.dao.TestDao.getById"/>
     </resultMap>
@@ -30,7 +30,7 @@
             ass_id_tsk,
             ass_id_tst
         FROM ASSOCIATION
-        WHERE ass_tsk_id = #{idTask}
+        WHERE ass_id_tsk = #{idTask}
     </select>
     
     
