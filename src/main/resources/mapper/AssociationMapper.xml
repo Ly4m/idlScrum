@@ -19,6 +19,10 @@
         WHERE ass_id = #{idAssociation}
     </delete>
     
+    <delete id="deleteAll">
+    	DELETE FROM ASSOCIATION
+    </delete>
+    
     <delete id="deleteForTestId">
     	DELETE FROM ASSOCIATION
     	WHERE ass_id_tst = #{idTest}

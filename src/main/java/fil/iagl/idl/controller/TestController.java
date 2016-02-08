@@ -92,7 +92,7 @@ public class TestController {
 				e.printStackTrace();
 			}
 
-			// ajouter mapper addAssociationByTestName || duplicate ?
+			associationService.deleteAll();
 			ScrumApplication.associationMap.keySet().forEach(testName -> ScrumApplication.associationMap.get(testName)
 					.forEach(taskName -> associationService.addByTestName(testName, taskName)));
 

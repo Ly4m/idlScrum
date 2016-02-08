@@ -17,4 +17,6 @@ public interface AssociationService {
 	void deleteForTestId(Integer idTest);
 
 	void addByTestName(String testName, String taskName);
+
+	void deleteAll();
 }

@@ -15,4 +15,6 @@ public interface AssociationDao {
 	List<Association> getAllForTask(@Param("idTask") Integer idTask);
 
 	void deleteForTestId(@Param("idTest") Integer idTest);
+
+	void deleteAll();
 }

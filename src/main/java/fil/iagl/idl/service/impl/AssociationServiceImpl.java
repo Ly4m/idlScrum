@@ -61,4 +61,9 @@ public class AssociationServiceImpl implements AssociationService {
 		associationDao.create(association);
 	}
 
+	@Override
+	public void deleteAll() {
+		associationDao.deleteAll();
+	}
+
 }
